@@ -2,9 +2,11 @@ pipeline{
     agent any
 
     stages{
-        stage("Inicial"){
+        stage("Docker Build"){
             steps{
-                echo "Iniciando a Pipeline"
+                script{
+                    dockerapp = docker.build("api-node:${env.BUILD_ID}","-f Dockerfile")
+                }
             }
 
         }
