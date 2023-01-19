@@ -5,7 +5,7 @@ pipeline{
         stage("Docker Build"){
             steps{
                 script{
-                    dockerapp = docker.build("api-node:${env.BUILD_ID}","-f Dockerfile")
+                    dockerapp = docker.build("apiNodeUpload")
                 }
             }
 
