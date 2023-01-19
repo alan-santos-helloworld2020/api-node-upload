@@ -2,10 +2,10 @@ pipeline{
     agent any
 
     stages{
-        stage("Docker Build"){
+        stage("Build"){
             steps{
                 script{
-                    dockerapp = docker.build("apiNodeUpload")
+                    dockerapp = docker.build("apinodeupload")
                 }
             }
 
