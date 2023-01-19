@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const multer  = require('multer')
+const filessystem = require('fs');
 const upload = multer({storage:multer.diskStorage({
     destination:(req,file,cb)=>{
         cb(null,"./public/uploads/")
@@ -10,6 +11,25 @@ const upload = multer({storage:multer.diskStorage({
         cb(null,file.originalname)
     }
 })})
+
+
+var pastaPublic = './public';
+if (!filessystem.existsSync(pastaPublic)){
+    filessystem.mkdirSync(pastaPublic);
+}else
+{
+    console.log("pasta não criada");
+}
+
+var pastaUpload = './public/uploads/';
+if (!filessystem.existsSync(pastaUpload)){
+    filessystem.mkdirSync(pastaUpload);
+}else
+{
+    console.log("pasta não criada");
+}
+
+
 const cors = require("cors");
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 3000;
